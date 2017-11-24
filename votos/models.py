@@ -27,8 +27,12 @@ class Candidato(models.Model):
     #TODO Completar segun consideraciones del desarrollador
     En este comentario escribir por que se decide modelar de esta
     forma la clase
+    --- Decido utilizar este modelaje porque el candidato esta asociado al distrito
     """
-    pass
+    nombre = models.CharField('nombre del candidato', max_length = 128)
+    distrito = models.ForeignKey(Distrito)
+
+
 
 
 class Votos(models.Model):
@@ -36,5 +40,7 @@ class Votos(models.Model):
     #TODO Completar segun consideraciones del desarrollador
     En este comentario escribir por que se decide modelar de esta
     forma la clase
+    --- los votos se asocian al candidato, dado a esto que sino no sabriamos la cantidad de votaciones hacia el mismo
     """
-    pass
+    voto = models.IntegerField ('cantidad de votos', null=True, default=0)
+    candidato = models.ForeignKey(Candidato)

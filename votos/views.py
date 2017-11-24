@@ -7,6 +7,7 @@ from django.shortcuts import render
 from votos.models import *
 
 
+
 def resultado_global(request):
     """
     Generar la vista para devolver el resultado global de la elección.
@@ -20,6 +21,16 @@ def resultado_global(request):
     context={}
     context['distritos'] = Distrito.objects.all()
     #TODO TU CODIGO AQUI
+    cantidad_de_votos = votos.objects.filter(voto*candidato)
+
+    porc_candidato = cantidad_de_votos * candidato / 100
+
+    voto_nulo = 0
+
+    if voto == null:
+        voto_nulo + 1
+
+    porc_voto_nulo = voto_nulo /100
 
     return render(request,'global.html',context)
 
@@ -36,5 +47,8 @@ def resultado_distrital(request):
     context={}
 
     #TODO TU CODIGO AQUI
+    padron = cantidad_votantes.objects.all()
+    porc_votos_distrito = padron / 100
+    
 
     return render(request,'distrital.html',context)
